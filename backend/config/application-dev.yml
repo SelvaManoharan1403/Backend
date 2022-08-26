@@ -1,0 +1,12 @@
+server:
+  port: 9091
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/bookSet
+      auto-index-creation: true
+
+  bezkoder:
+    app:
+      jwtSecret: bezKoderSecretKey

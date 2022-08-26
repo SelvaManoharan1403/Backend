@@ -1,0 +1,71 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+package-lock.json
+yarn.lock
+
+commit.sh
+
+# Maven
+target/
+
+# Eclipse
+.settings/
+.classpath
+.project
+.factorypath
+.apt_generated/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+#vscode
+.vscode/
+
+# gnupg keyring
+/.gnupg
+
+#nodejs
+node_modules/
+node/
+
+#flattened POMs
+.flattened-pom.xml
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+*.iml
