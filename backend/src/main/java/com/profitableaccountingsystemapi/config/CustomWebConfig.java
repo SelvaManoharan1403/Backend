@@ -1,6 +1,6 @@
-package com.softwareProduct.config;
+package com.profitableaccountingsystemapi.config;
 
-import com.softwareProduct.dto.GlobalPayloadDataDTO;
+import com.profitableaccountingsystemapi.dto.GlobalPayloadDataDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

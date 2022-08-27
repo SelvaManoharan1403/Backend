@@ -1,6 +1,6 @@
-package com.softwareProduct.repo;
+package com.profitableaccountingsystemapi.repo;
 
-import com.softwareProduct.entity.User;
+import com.profitableaccountingsystemapi.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface UserRepository extends MongoRepository<User, String> {

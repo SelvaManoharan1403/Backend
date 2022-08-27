@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import '../App.css'
 import Dashboard from '../pages/Dashboard';
 import ForgetPassword from '../pages/ForgetPassword';
+import ChangePassword from '../pages/ChangePassword';
 import Investigate from '../pages/Investigate';
 import Login from '../pages/Login';
 import Manufacture from '../pages/Manufacture';
@@ -29,6 +30,7 @@ function App() {
         <Route path="/" element={<PublicRoute />}>
             <Route path="/login" element={<Login />} />
             <Route path="/forgotPassword" element={<ForgetPassword />} />
+            <Route path="/changePassword" element={<ChangePassword />} />
           </Route>
       </Routes>
       <ToastContainer theme="colored" position="top-center" autoClose="1000" />

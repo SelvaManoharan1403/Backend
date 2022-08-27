@@ -1,7 +1,7 @@
-package com.softwareProduct.config;
+package com.profitableaccountingsystemapi.config;
 
-import com.softwareProduct.dto.GlobalPayloadDataDTO;
-import com.softwareProduct.util.JwtUtils;
+import com.profitableaccountingsystemapi.dto.GlobalPayloadDataDTO;
+import com.profitableaccountingsystemapi.util.JwtUtils;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

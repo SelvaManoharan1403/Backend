@@ -1,26 +1,15 @@
-package com.softwareProduct.controller;
+package com.profitableaccountingsystemapi.controller;
 
-import com.softwareProduct.common.APIResponse;
-import com.softwareProduct.dto.GlobalPayloadDataDTO;
-import com.softwareProduct.dto.LoginRequestDTO;
-import com.softwareProduct.dto.SignUpRequestDTO;
-import com.softwareProduct.dto.TokenDTO;
-import com.softwareProduct.service.LoginService;
+import com.profitableaccountingsystemapi.common.APIResponse;
+import com.profitableaccountingsystemapi.dto.GlobalPayloadDataDTO;
+import com.profitableaccountingsystemapi.dto.LoginRequestDTO;
+import com.profitableaccountingsystemapi.dto.SignUpRequestDTO;
+import com.profitableaccountingsystemapi.dto.TokenDTO;
+import com.profitableaccountingsystemapi.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.format.FormatterRegistry;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.MessageCodesResolver;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
-import org.springframework.web.servlet.HandlerExceptionResolver;
-import org.springframework.web.servlet.config.annotation.*;
-
-import java.util.List;
 
 @Controller
 //@CrossOrigin(origins = "*", allowedHeaders = "authorization")

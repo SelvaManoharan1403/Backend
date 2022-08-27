@@ -1,10 +1,8 @@
-package com.softwareProduct.entity;
+package com.profitableaccountingsystemapi.entity;
 
-import com.softwareProduct.common.Constant;
+import com.profitableaccountingsystemapi.common.Constant;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
-
-import javax.annotation.Generated;
 
 public class User {
     @Id

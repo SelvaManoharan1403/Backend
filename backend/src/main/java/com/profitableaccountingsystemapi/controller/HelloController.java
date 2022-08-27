@@ -1,4 +1,4 @@
-package com.softwareProduct.controller;
+package com.profitableaccountingsystemapi.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

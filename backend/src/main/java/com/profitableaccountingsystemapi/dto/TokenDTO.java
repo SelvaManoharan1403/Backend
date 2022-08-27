@@ -1,4 +1,4 @@
-package com.softwareProduct.dto;
+package com.profitableaccountingsystemapi.dto;
 
 public class TokenDTO {
     private String refreshToken;

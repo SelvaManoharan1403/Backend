@@ -1,12 +1,12 @@
-package com.softwareProduct.service;
+package com.profitableaccountingsystemapi.service;
 
-import com.softwareProduct.common.APIResponse;
-import com.softwareProduct.dto.LoginRequestDTO;
-import com.softwareProduct.dto.SignUpRequestDTO;
-import com.softwareProduct.dto.TokenDTO;
-import com.softwareProduct.entity.User;
-import com.softwareProduct.repo.UserRepository;
-import com.softwareProduct.util.JwtUtils;
+import com.profitableaccountingsystemapi.common.APIResponse;
+import com.profitableaccountingsystemapi.dto.LoginRequestDTO;
+import com.profitableaccountingsystemapi.dto.SignUpRequestDTO;
+import com.profitableaccountingsystemapi.dto.TokenDTO;
+import com.profitableaccountingsystemapi.entity.User;
+import com.profitableaccountingsystemapi.repo.UserRepository;
+import com.profitableaccountingsystemapi.util.JwtUtils;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

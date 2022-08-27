@@ -1,8 +1,7 @@
-package com.softwareProduct.util;
+package com.profitableaccountingsystemapi.util;
 
-import com.softwareProduct.entity.RefreshToken;
-import com.softwareProduct.entity.User;
-import com.softwareProduct.exception.AccessDeniedException;
+import com.profitableaccountingsystemapi.entity.User;
+import com.profitableaccountingsystemapi.exception.AccessDeniedException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

@@ -1,7 +1,6 @@
-package com.softwareProduct.exception;
+package com.profitableaccountingsystemapi.exception;
 
-import com.softwareProduct.common.APIResponse;
-import org.springframework.http.HttpStatus;
+import com.profitableaccountingsystemapi.common.APIResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

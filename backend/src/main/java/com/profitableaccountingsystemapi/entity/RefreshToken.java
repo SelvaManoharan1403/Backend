@@ -1,4 +1,4 @@
-package com.softwareProduct.entity;
+package com.profitableaccountingsystemapi.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.*;

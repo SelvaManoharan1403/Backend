@@ -1,4 +1,4 @@
-package com.softwareProduct.common;
+package com.profitableaccountingsystemapi.common;
 
 public interface Constant {
 

@@ -1,4 +1,4 @@
-package com.softwareProduct.exception;
+package com.profitableaccountingsystemapi.exception;
 
 public class AccessDeniedException extends RuntimeException{
 
