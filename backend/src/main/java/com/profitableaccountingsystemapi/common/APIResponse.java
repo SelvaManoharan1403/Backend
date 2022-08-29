@@ -26,8 +26,9 @@ public class APIResponse {
         return data;
     }
 
-    public void setData(Object data) {
+    public APIResponse setData(Object data) {
         this.data = data;
+        return null;
     }
 
     public Object getError() {

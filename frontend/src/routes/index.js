@@ -30,7 +30,7 @@ function App() {
         <Route path="/" element={<PublicRoute />}>
             <Route path="/login" element={<Login />} />
             <Route path="/forgotPassword" element={<ForgetPassword />} />
-            <Route path="/changePassword" element={<ChangePassword />} />
+            <Route path="/changePassword/:token" element={<ChangePassword />} />
           </Route>
       </Routes>
       <ToastContainer theme="colored" position="top-center" autoClose="1000" />

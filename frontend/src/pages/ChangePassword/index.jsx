@@ -1,11 +1,13 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup";
 import CenterBox from '../../components/CenterBox';
 import { Box, TextField, Typography } from '@mui/material';
 import { ButtonStyled } from './styled'
+import { useEffect } from 'react';
+import AuthService from '../../api/Services/auth.service';
 
 const schema = yup.object().shape({
   password: yup.string()
@@ -19,6 +21,10 @@ const schema = yup.object().shape({
 
 const ForgotPassword = () => {
   const navigate = useNavigate()
+
+  const params = useParams();
+  console.log(params); 
+
   const {
     register,
     handleSubmit,
@@ -30,7 +36,26 @@ const ForgotPassword = () => {
   const changeHandler = (values) => {
     //navigate('/dashboard')
     console.log(values.password)
+    AuthService.resetPasswordService(values.password, params.token).then(
+      (res) => {
+        navigate('/login')
+      },
+      error => {
+        //navigate('/login')
+      }
+    );
   }
+  useEffect(()=> {
+    AuthService.changePasswordService(params.token).then(
+      (res) => {
+
+      },
+      error => {
+        navigate('/login')
+      }
+    );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <CenterBox>
       <Box

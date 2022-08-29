@@ -4,7 +4,7 @@ import com.profitableaccountingsystemapi.common.Constant;
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 
-public class User {
+public class UserModel {
     @Id
     private String id;
     private String name;
@@ -20,14 +20,18 @@ public class User {
     private DateTime createAt;
     private DateTime updateAt;
 
-    private String refreshToken;
+    private String resetToken;
 
-    public String getRefreshToken() {
-        return refreshToken;
+
+    public UserModel() {
     }
 
-    public void setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
     }
 
     public String getId() {

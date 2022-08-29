@@ -6,6 +6,24 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/bookSet
       auto-index-creation: true
+  security:
+    user:
+      password: Test12345_
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: arumugapandiyan.6@gmail.com
+    password: vevgosvzmrzixnga
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
 
   bezkoder:
     app:

@@ -42,6 +42,34 @@ const privateUser = () => {
       //console.log(response);
       return response.data;
     });
+}
+const forgetPassword = (token) => {
+  return api
+    .post("login", {
+      resetToken: token
+    })
+    .then((response) => {
+      return response.data;
+    });
+};
+const changePasswordService = (resetToken) => {
+  return api
+    .post("changePassword", {
+      resetToken
+    })
+    .then((response) => {
+      return response.data;
+    });
+};
+const resetPasswordService = (password, resetToken) => {
+  return api
+    .put("changePassword", {
+      password,
+      resetToken,
+    })
+    .then((response) => {
+      return response.data;
+    });
 };
 const AuthService = {
   register,
@@ -49,5 +77,8 @@ const AuthService = {
   logout,
   getCurrentUser,
   privateUser,
+  forgetPassword,
+  changePasswordService,
+  resetPasswordService
 };
 export default AuthService;

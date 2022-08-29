@@ -1,5 +1,7 @@
 import axios from "axios";
 import TokenService from "./token.service";
+
+axios.defaults.baseURL = 'http://localhost:9091/';
 const instance = axios.create({
   headers: {
     "Content-Type": "application/json",
@@ -9,7 +11,7 @@ instance.interceptors.request.use(
   (config) => {
     const token = TokenService.getLocalAccessToken();
     if (token) {
-       config.headers["authorization"] =  token;
+       config.headers["authorization"] =  "Bearer " + token;
     }
     return config;
   },
@@ -25,7 +27,7 @@ instance.interceptors.response.use(
     const originalConfig = err.config;
     if (originalConfig.url !== "login" && err.response) {
       // Access Token was expired
-      if (err.response.status === 403 && !originalConfig._retry) {
+      if (err.response.status === 401 && !originalConfig._retry) {
         originalConfig._retry = true;
         instance.post("refreshToken", {
           refreshToken: TokenService.getLocalRefreshToken(),
