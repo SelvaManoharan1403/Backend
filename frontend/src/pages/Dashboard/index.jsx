@@ -6,7 +6,6 @@ import Chart from '../../components/Chart'
 import Featured from '../../components/Featured'
 import { useUserContext } from '../../context/userContext'
 import { useEffect } from 'react';
-import { toast } from 'react-toastify';
 import AuthService from '../../api/Services/auth.service';
 
 const Dashboard = () => {
@@ -20,7 +19,7 @@ const Dashboard = () => {
         userValue(res.data)
       },
       error => {
-        toast.error(error.response.data.message)
+        //toast.error(error.response.data.message)
       }
     );
   // eslint-disable-next-line react-hooks/exhaustive-deps

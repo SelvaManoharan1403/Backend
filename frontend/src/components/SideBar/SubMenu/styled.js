@@ -23,6 +23,7 @@ export const NavLinkWrapperStyled = styled.div`
 export const MenuIconsStyled = styled.div`
   margin-right: 20px;
   display: flex;
+  font-size: 22px;
 `
 export const MenuLinkStyled = styled.div`
   font-size: 14px;

@@ -45,8 +45,8 @@ const privateUser = () => {
 }
 const forgetPassword = (token) => {
   return api
-    .post("login", {
-      resetToken: token
+    .post("forgetPassword", {
+      emailId: token
     })
     .then((response) => {
       return response.data;

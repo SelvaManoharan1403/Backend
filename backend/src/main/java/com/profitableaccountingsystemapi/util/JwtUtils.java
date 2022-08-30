@@ -2,9 +2,11 @@ package com.profitableaccountingsystemapi.util;
 
 import com.profitableaccountingsystemapi.entity.UserModel;
 import com.profitableaccountingsystemapi.exception.AccessDeniedException;
+import com.profitableaccountingsystemapi.repo.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -23,34 +25,14 @@ public class JwtUtils implements Serializable  {
     @Value("secret")
     private String jwtSecret;
 
-    @Value("1000")
+    @Value("100")
     private int expiryDuration;
 
     @Value("10050")
     private int refreshTokenExpirationMs;
 
-    public String generateJwt(UserModel userModel) {
-
-        long milliTime = System.currentTimeMillis();
-        long expiryTime = milliTime + expiryDuration * 1000;
-
-        Date issuedAt = new Date(milliTime);
-        Date expiryAt = new Date(expiryTime);
-
-        // claims
-        Claims claims = Jwts.claims()
-                .setIssuer(userModel.getId().toString())
-                .setIssuedAt(issuedAt)
-                .setExpiration(expiryAt);
-
-        claims.put("name", userModel.getName());
-
-        //generate jwt using claims
-        return Jwts.builder()
-                .setClaims(claims)
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
-                .compact();
-    }
+    @Autowired
+    private UserRepository userRepository;
 
     public Claims verify(String authorization) throws Exception {
         try {
@@ -82,23 +64,6 @@ public class JwtUtils implements Serializable  {
                 .compact();
     }
 
-    public String generateResetToken(UserModel userModel) {
-        long milliTime = System.currentTimeMillis();
-
-        Date issuedAt = new Date(milliTime);
-
-        System.out.println(userModel);
-
-        Claims claims = Jwts.claims()
-                .setIssuer(userModel.getEmailId().toString())
-                .setIssuedAt(issuedAt);
-
-        return Jwts.builder()
-                .setClaims(claims)
-                .signWith(SignatureAlgorithm.HS256, jwtSecret)
-                .compact();
-    }
-
     //retrieve username from jwt token
     public String getUsernameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
@@ -119,7 +84,7 @@ public class JwtUtils implements Serializable  {
     }
 
     //check if the token has expired
-    private Boolean isTokenExpired(String token) {
+    public Boolean isTokenExpired(String token) {
         final Date expiration = getExpirationDateFromToken(token);
         return expiration.before(new Date());
     }
@@ -130,12 +95,9 @@ public class JwtUtils implements Serializable  {
         return doGenerateToken(claims, userDetails.getUsername());
     }
 
-    //while creating the token -
-    //1. Define  claims of the token, like Issuer, Expiration, Subject, and the ID
-    //2. Sign the JWT using the HS512 algorithm and secret key.
-    //3. According to JWS Compact Serialization(https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41#section-3.1)
-    //   compaction of the JWT to a URL-safe string
     private String doGenerateToken(Map<String, Object> claims, String subject) {
+        UserModel existUser = userRepository.findOneByEmailId(subject);
+        claims.put("name", existUser.getName());
 
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiryDuration * 1000))

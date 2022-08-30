@@ -14,6 +14,7 @@ const Header = () => {
   }
   useEffect(() => {
     let user = JSON.parse(localStorage.getItem('user'));
+    console.log(Base64.decode(user.accessToken.split('.')[1]));
     setUserName(JSON.parse(Base64.decode(user.accessToken.split('.')[1])).name)
   }, [])
   useEffect(() => {
@@ -35,7 +36,7 @@ const Header = () => {
         <Avatar alt="user" src="https://media-exp1.licdn.com/dms/image/C5603AQHJ9jlx3L2eXA/profile-displayphoto-shrink_800_800/0/1516891232598?e=1665014400&v=beta&t=WpcQsPtxUbiFraoeeWpRApJ5saRqwX23McPEjQucJhQ" />
         </div>
         <DropDownListStyled isOpen={isOpen}  className={`dropdown ${isOpen ? 'open' : 'closed' }`}>
-          <h3 style={{textTransform: 'capitalize'}}>{userName} UI Developer</h3>
+          <h3 style={{textTransform: 'capitalize'}}>{userName} Developer</h3>
           <ul>
             <DropdownItem text="My Profile" />
             <DropdownItem text="Log Out" textLink="/login" onClick={logOutHandler} />

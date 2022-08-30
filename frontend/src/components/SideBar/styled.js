@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const MainWrapperStyled = styled.main`
   padding-left: 100px;
   height: 100vh;
+  padding-right: 30px;
 `
 export const SidebarWrapperStyled = styled.div`
   box-shadow: 0 1.6rem 3rem rgb(0 0 0 / 10%);

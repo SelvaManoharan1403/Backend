@@ -1,5 +1,5 @@
-import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup";
@@ -8,6 +8,7 @@ import { Box, TextField, Typography } from '@mui/material';
 import { ButtonStyled } from './styled'
 import { useEffect } from 'react';
 import AuthService from '../../api/Services/auth.service';
+import { toast } from 'react-toastify';
 
 const schema = yup.object().shape({
   password: yup.string()
@@ -19,7 +20,8 @@ const schema = yup.object().shape({
       .oneOf([yup.ref('password')], 'Passwords does not match'),
 });
 
-const ForgotPassword = () => {
+const ChangePassword = () => {
+  const [isSuccess, setIsSuccess] = useState(false)
   const navigate = useNavigate()
 
   const params = useParams();
@@ -38,9 +40,10 @@ const ForgotPassword = () => {
     console.log(values.password)
     AuthService.resetPasswordService(values.password, params.token).then(
       (res) => {
-        navigate('/login')
+        setIsSuccess(!isSuccess)
       },
       error => {
+        toast.error(error.response.data.data)
         //navigate('/login')
       }
     );
@@ -64,55 +67,74 @@ const ForgotPassword = () => {
           flexDirection: 'column',
           alignItems: 'center',
         }}>
-        <Typography mb={1} component="h1" variant="h5">
-          Change password
-        </Typography>
-        <Typography  sx={{ color: '#05050b', textAlign: 'center' }} mb={2} component="p" variant="p">
-          Enter a new password below to change your password.
-        </Typography>
-        <Box component="form" onSubmit={handleSubmit(changeHandler)} noValidate sx={{ mt: 1, width: '100%' }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            {...register('password', {
-              required: true,
-            })}
-          />
-          {errors.password && (
-            <div className="error-message">*{errors.password?.message}</div>
-          )}
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="confirmPassword"
-            label="confirmPassword"
-            type="text"
-            id="confirmPassword"
-            {...register('confirmPassword', {
-              required: true,
-            })}
-          />
-          {errors.confirmPassword && (
-            <div className="error-message">*{errors.confirmPassword?.message}</div>
-          )}
-          <ButtonStyled
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}>
-            Change Password
-          </ButtonStyled>
-        </Box>
+        { isSuccess ?
+          <>
+            <Typography mb={1} component="h1" variant="h5">
+              Successfully Password Changed...!
+            </Typography>
+            <Typography  sx={{ color: '#05050b', textAlign: 'center' }} mb={2} component="p" variant="p">
+              You will receive a link to create a new password via email.
+            </Typography>
+            <ButtonStyled
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}>
+                <Link style={{ color: '#fff' }} to="/login">Return to login</Link>
+            </ButtonStyled>
+          </> :
+          <>
+            <Typography mb={1} component="h1" variant="h5">
+              Change password
+            </Typography>
+            <Typography  sx={{ color: '#05050b', textAlign: 'center' }} mb={2} component="p" variant="p">
+              Enter a new password below to change your password.
+            </Typography>
+            <Box component="form" onSubmit={handleSubmit(changeHandler)} noValidate sx={{ mt: 1, width: '100%' }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                {...register('password', {
+                  required: true,
+                })}
+              />
+              {errors.password && (
+                <div className="error-message">*{errors.password?.message}</div>
+              )}
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="confirmPassword"
+                label="confirmPassword"
+                type="text"
+                id="confirmPassword"
+                {...register('confirmPassword', {
+                  required: true,
+                })}
+              />
+              {errors.confirmPassword && (
+                <div className="error-message">*{errors.confirmPassword?.message}</div>
+              )}
+              <ButtonStyled
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}>
+                Change Password
+              </ButtonStyled>
+            </Box>
+          </>
+        }
       </Box>
     </CenterBox>
   )
 }
 
-export default ForgotPassword
+export default ChangePassword
