@@ -24,7 +24,7 @@ spring:
           timeout: 5000
           writetimeout: 5000
 
-
-  bezkoder:
-    app:
-      jwtSecret: bezKoderSecretKey
+app:
+  jwtSecret:  secret
+  expiryDuration: 100
+  refreshTokenExpirationMs: 1000

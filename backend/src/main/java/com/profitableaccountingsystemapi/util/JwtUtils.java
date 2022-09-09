@@ -22,13 +22,13 @@ public class JwtUtils implements Serializable  {
 
     private static final long serialVersionUID = 234234523523L;
 
-    @Value("secret")
+    @Value("${app.jwtSecret}")
     private String jwtSecret;
 
-    @Value("100")
+    @Value("${app.expiryDuration}")
     private int expiryDuration;
 
-    @Value("10050")
+    @Value("${app.refreshTokenExpirationMs}")
     private int refreshTokenExpirationMs;
 
     @Autowired

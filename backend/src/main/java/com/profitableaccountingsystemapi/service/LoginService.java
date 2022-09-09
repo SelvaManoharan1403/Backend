@@ -65,7 +65,10 @@ public class LoginService {
         userModel.setPhoneNumber(signUpRequestDTO.getPhoneNumber());
         userModel.setPassword(passwordEncoder.encode(signUpRequestDTO.getPassword()));
 
-        userModel.setResetToken(passwordEncoder.encode(userModel.getEmailId()).replaceAll("[^A-Za-z]",""));
+        String ResetToken = passwordEncoder.encode(userModel.getEmailId()).replaceAll("[^0-9]","");
+        String lastSixToken = ResetToken.substring(ResetToken.length() - 6);
+
+        userModel.setResetToken(lastSixToken);
 
         //store entity
 
@@ -172,7 +175,10 @@ public class LoginService {
 
         userModel.setPassword(passwordEncoder.encode(updatePasswordDTO.getPassword()));
 
-        userModel.setResetToken(passwordEncoder.encode(userModel.getEmailId()).replaceAll("[^A-Za-z]",""));
+        String ResetToken = passwordEncoder.encode(userModel.getEmailId()).replaceAll("[^0-9]","");
+        String lastSixToken = ResetToken.substring(ResetToken.length() - 6);
+
+        userModel.setResetToken(lastSixToken);
 
         userRepository.save(userModel);
 
@@ -193,12 +199,14 @@ public class LoginService {
 
         String appUrl = httpServletRequest.getScheme() + "://" + httpServletRequest.getServerName() + ":3000";
 
+        String ResetToken = userModel.getResetToken();
+
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setFrom("Aru");
         simpleMailMessage.setTo(forgetPasswordDTO.getEmailId());
         simpleMailMessage.setSubject("Profitable Accounting System Api\n");
-        simpleMailMessage.setText("Hi..\n\nTo reset your password, click the link below:\n\n" + appUrl
-                + "/changePassword/" + userModel.getResetToken());
+        simpleMailMessage.setText("Hi..\n\nTo Mobile : "+ResetToken+"\nTo reset your password, click the link below:\n\n" + appUrl
+                + "/changePassword/" + ResetToken);
 
         javaMailSender.send(simpleMailMessage);
 
