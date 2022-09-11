@@ -60,7 +60,7 @@ public class LoginService {
         UserModel userModel = new UserModel();
         userModel.setName(signUpRequestDTO.getName());
         userModel.setEmailId(signUpRequestDTO.getEmailId());
-        userModel.setActive(Boolean.TRUE);
+        userModel.setIsActive(Boolean.TRUE);
         userModel.setGender(signUpRequestDTO.getGender());
         userModel.setPhoneNumber(signUpRequestDTO.getPhoneNumber());
         userModel.setPassword(passwordEncoder.encode(signUpRequestDTO.getPassword()));
