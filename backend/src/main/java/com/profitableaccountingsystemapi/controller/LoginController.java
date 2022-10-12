@@ -2,6 +2,7 @@ package com.profitableaccountingsystemapi.controller;
 
 import com.profitableaccountingsystemapi.common.APIResponse;
 import com.profitableaccountingsystemapi.dto.*;
+import com.profitableaccountingsystemapi.entity.Specification;
 import com.profitableaccountingsystemapi.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,6 @@ public class LoginController {
 
     @Autowired
     private GlobalPayloadDataDTO globalPayloadDataDTO;
-
     @PostMapping("/register")
     public ResponseEntity<APIResponse> signUp(@RequestBody SignUpRequestDTO signUpRequestDTO) {
         APIResponse apiResponse = loginService.signUp(signUpRequestDTO);
@@ -26,7 +26,6 @@ public class LoginController {
                 .status(apiResponse.getStatus())
                 .body(apiResponse);
     }
-
     @PostMapping("/login")
     public ResponseEntity<APIResponse> login(@RequestBody LoginRequestDTO loginRequestDTO) throws Exception {
         APIResponse apiResponse = loginService.login(loginRequestDTO);
@@ -35,7 +34,6 @@ public class LoginController {
                 .status(apiResponse.getStatus())
                 .body(apiResponse);
     }
-
     @GetMapping("/test")
     public ResponseEntity<APIResponse> test() {
         APIResponse apiResponse = new APIResponse();

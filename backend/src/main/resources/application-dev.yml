@@ -4,7 +4,7 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/bookSet
+      uri: mongodb://localhost:27017/tlaccountant
       auto-index-creation: true
   mail:
     host: smtp.gmail.com

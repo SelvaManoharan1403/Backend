@@ -56,6 +56,7 @@ public class LoginService {
             return apiResponse;
         }
 
+
         // dto to entity
         UserModel userModel = new UserModel();
         userModel.setName(signUpRequestDTO.getName());
