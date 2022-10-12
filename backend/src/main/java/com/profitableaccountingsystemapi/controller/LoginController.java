@@ -2,7 +2,6 @@ package com.profitableaccountingsystemapi.controller;
 
 import com.profitableaccountingsystemapi.common.APIResponse;
 import com.profitableaccountingsystemapi.dto.*;
-import com.profitableaccountingsystemapi.entity.Specification;
 import com.profitableaccountingsystemapi.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
